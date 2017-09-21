@@ -1,6 +1,9 @@
 package com.sabel;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Fenster extends JFrame {
 
@@ -17,12 +20,18 @@ public class Fenster extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.initComonents();
-
+        this.initEvents();
         this.setSize(300, 300);
         this.setVisible(true);
 
     }
 
+    private void initEvents() {
+        MeinInnererActionListener mial = new MeinInnererActionListener();
+        jbtnRot.addActionListener(mial);
+        jbtnGelb.addActionListener(mial);
+        jbtnBLau.addActionListener(mial);
+    }
 
 
     private void initComonents() {
@@ -40,8 +49,24 @@ public class Fenster extends JFrame {
     }
 
 
+    public class MeinInnererActionListener implements ActionListener {
 
-
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println(e.getActionCommand());
+            switch (e.getActionCommand()){
+                case "Rot":
+                    jPanel.setBackground(Color.RED);
+                    break;
+                case "Gelb":
+                    jPanel.setBackground(Color.YELLOW);
+                    break;
+                case "Blau":
+                    jPanel.setBackground(Color.BLUE);
+                    break;
+            }
+        }
+    }
 
 
 }
