@@ -17,12 +17,20 @@ public class Fenster extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.initComonents();
+        this.initEvents();
 
         this.setSize(300, 300);
         this.setVisible(true);
 
     }
 
+    private void initEvents() {
+        MeinActionListener mal = new MeinActionListener(jPanel);
+        jbtnRot.addActionListener(mal);
+        jbtnGelb.addActionListener(mal);
+        jbtnBLau.addActionListener(mal);
+
+    }
 
 
     private void initComonents() {
@@ -38,10 +46,6 @@ public class Fenster extends JFrame {
 
 
     }
-
-
-
-
 
 
 }
